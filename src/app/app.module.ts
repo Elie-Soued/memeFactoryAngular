@@ -6,11 +6,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TextinputComponent } from './components/textinput/textinput.component';
 import { ImageHolderComponent } from './components/image-holder/image-holder.component';
 
 @NgModule({
-  declarations: [AppComponent, TextinputComponent, ImageHolderComponent],
+  declarations: [AppComponent, ImageHolderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
