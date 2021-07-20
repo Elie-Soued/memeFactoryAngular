@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ImagesService } from '../../images.service';
-import { image } from 'src/app/image';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-image-holder',
@@ -8,8 +8,11 @@ import { image } from 'src/app/image';
   styleUrls: ['./image-holder.component.css'],
 })
 export class ImageHolderComponent implements OnInit {
-  images?: any = [];
+  images?: any;
   index: number = 0;
+  upperInput = new FormControl('');
+  lowerInput = new FormControl('');
+  colorInput = new FormControl('');
 
   constructor(private imageService: ImagesService) {}
 
@@ -22,4 +25,17 @@ export class ImageHolderComponent implements OnInit {
       .getImages()
       .subscribe((object) => (this.images = object.data.memes));
   }
+
+  goNext = () => {
+    this.index === 99 ? (this.index = 0) : this.index++;
+  };
+
+  goBack = () => {
+    this.index === 0 ? (this.index = 99) : this.index--;
+  };
+
+  goRandom = () => {
+    let randomNumber = Math.floor(Math.random() * 100);
+    this.index = randomNumber;
+  };
 }
