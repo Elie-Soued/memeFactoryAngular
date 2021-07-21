@@ -10,9 +10,11 @@ import { FormControl } from '@angular/forms';
 export class ImageHolderComponent implements OnInit {
   images?: any;
   index: number = 0;
+  uploadedPicture?: any;
   upperInput = new FormControl('');
   lowerInput = new FormControl('');
   colorInput = new FormControl('');
+  fileInput = new FormControl('');
 
   constructor(private imageService: ImagesService) {}
 
@@ -23,19 +25,29 @@ export class ImageHolderComponent implements OnInit {
   getImages(): void {
     this.imageService
       .getImages()
-      .subscribe((object) => (this.images = object.data.memes));
+      .subscribe((object) => this.setImages(object.data.memes));
+  }
+
+  setImages(data: any) {
+    this.images = data;
   }
 
   goNext = () => {
-    this.index === 99 ? (this.index = 0) : this.index++;
+    this.index === this.images.length - 1 ? (this.index = 0) : this.index++;
   };
 
   goBack = () => {
-    this.index === 0 ? (this.index = 99) : this.index--;
+    this.index === 0 ? (this.index = this.images.length - 1) : this.index--;
   };
 
   goRandom = () => {
     let randomNumber = Math.floor(Math.random() * 100);
     this.index = randomNumber;
   };
+
+  onFileSelected(e: any) {
+    const uploaded = window.URL.createObjectURL(e.target.files[0]);
+    this.uploadedPicture = uploaded;
+    console.log(uploaded);
+  }
 }
