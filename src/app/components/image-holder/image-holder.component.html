@@ -31,14 +31,14 @@
     </div>
   </div>
   <input type="file" id="input" multiple />
-  <p>{{ colorInput.value }}</p>
+
   <div id="imageWrapper">
     <img [src]="images[index].url" />
 
-    <div id="UpperInput" style="color: red">
+    <div id="UpperInput" [style.color]="colorInput.value">
       {{ upperInput.value }}
     </div>
-    <div id="LowerInput" style="color: red">
+    <div id="LowerInput" [style.color]="colorInput.value">
       {{ lowerInput.value }}
     </div>
   </div>
