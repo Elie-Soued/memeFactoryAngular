@@ -30,11 +30,16 @@
       />
     </div>
   </div>
-  <input type="file" id="input" multiple />
+  <input
+    type="file"
+    id="input"
+    multiple
+    [formControl]="fileInput"
+    (change)="onFileSelected($event)"
+  />
 
-  <div id="imageWrapper">
+  <div *ngIf="images" id="imageWrapper">
     <img [src]="images[index].url" />
-
     <div id="UpperInput" [style.color]="colorInput.value">
       {{ upperInput.value }}
     </div>
