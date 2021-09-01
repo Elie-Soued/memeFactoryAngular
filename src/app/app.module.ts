@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImageHolderComponent } from './components/image-holder/image-holder.component';
+import { SanitizePipe } from './sanitize.pipe';
 
 @NgModule({
   declarations: [AppComponent, ImageHolderComponent],
@@ -17,7 +18,7 @@ import { ImageHolderComponent } from './components/image-holder/image-holder.com
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [SanitizePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
