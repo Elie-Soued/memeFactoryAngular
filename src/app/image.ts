@@ -1,5 +1,5 @@
-export interface image {
-  id: number;
+export interface Image {
+  id: string;
   name: string;
   url: string;
   width: number;
