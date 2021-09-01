@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ImagesService } from '../../images.service';
 import { FormControl } from '@angular/forms';
+import { Image } from '../../Image';
+import { SanitizePipe } from '../../sanitize.pipe';
 
 @Component({
   selector: 'app-image-holder',
@@ -8,15 +10,19 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./image-holder.component.css'],
 })
 export class ImageHolderComponent implements OnInit {
-  images?: any;
+  images?: Image[];
   index: number = 0;
-  uploadedPicture?: any;
+  centralPicture?: string;
+  uploadedPicture: string = '';
   upperInput = new FormControl('');
   lowerInput = new FormControl('');
   colorInput = new FormControl('');
   fileInput = new FormControl('');
 
-  constructor(private imageService: ImagesService) {}
+  constructor(
+    private imageService: ImagesService,
+    private sanitize: SanitizePipe
+  ) {}
 
   ngOnInit(): void {
     this.getImages();
@@ -28,26 +34,42 @@ export class ImageHolderComponent implements OnInit {
       .subscribe((object) => this.setImages(object.data.memes));
   }
 
-  setImages(data: any) {
+  setImages(data: Image[]) {
     this.images = data;
+    this.centralPicture = this.images[this.index].url;
   }
 
   goNext = () => {
-    this.index === this.images.length - 1 ? (this.index = 0) : this.index++;
+    if (this.images) {
+      if (this.index === this.images.length - 1) {
+        this.index = 0;
+        this.centralPicture = this.images[0].url;
+      } else {
+        this.centralPicture = this.images[++this.index].url;
+      }
+    }
   };
 
   goBack = () => {
-    this.index === 0 ? (this.index = this.images.length - 1) : this.index--;
+    if (this.images) {
+      if (this.index === 0) {
+        this.index = this.images.length - 1;
+        this.centralPicture = this.images[this.images.length - 1].url;
+      } else {
+        this.centralPicture = this.images[--this.index].url;
+      }
+    }
   };
 
   goRandom = () => {
-    let randomNumber = Math.floor(Math.random() * 100);
-    this.index = randomNumber;
+    if (this.images) {
+      let randomNumber = Math.floor(Math.random() * 100);
+      this.centralPicture = this.images[randomNumber].url;
+    }
   };
 
-  onFileSelected(e: any) {
-    const uploaded = window.URL.createObjectURL(e.target.files[0]);
-    this.uploadedPicture = uploaded;
-    console.log(uploaded);
+  onFileSelected(event: any) {
+    const uploaded = URL.createObjectURL(event.target.files[0]);
+    this.centralPicture = this.sanitize.transform(uploaded);
   }
 }

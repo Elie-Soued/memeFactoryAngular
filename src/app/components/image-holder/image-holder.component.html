@@ -30,6 +30,7 @@
       />
     </div>
   </div>
+
   <input
     type="file"
     id="input"
@@ -38,8 +39,9 @@
     (change)="onFileSelected($event)"
   />
 
-  <div *ngIf="images" id="imageWrapper">
-    <img [src]="images[index].url" />
+  <div id="imageWrapper">
+    <img [src]="centralPicture" />
+
     <div id="UpperInput" [style.color]="colorInput.value">
       {{ upperInput.value }}
     </div>
