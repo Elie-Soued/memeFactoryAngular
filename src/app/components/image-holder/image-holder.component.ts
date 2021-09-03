@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ImagesService } from '../../images.service';
 import { FormControl } from '@angular/forms';
 import { Image } from '../../Image';
 import { SanitizePipe } from '../../sanitize.pipe';
+import * as htmlToImage from 'html-to-image';
 
 @Component({
   selector: 'app-image-holder',
@@ -13,7 +14,8 @@ export class ImageHolderComponent implements OnInit {
   images?: Image[];
   index: number = 0;
   centralPicture?: string;
-  uploadedPicture: string = '';
+  uploadedPicture?: string;
+  generatedImage?: string;
   upperInput = new FormControl('');
   lowerInput = new FormControl('');
   colorInput = new FormControl('');
@@ -72,4 +74,19 @@ export class ImageHolderComponent implements OnInit {
     const uploaded = URL.createObjectURL(event.target.files[0]);
     this.centralPicture = this.sanitize.transform(uploaded);
   }
+
+  generate = (dom: HTMLElement) => {
+    htmlToImage
+      .toPng(dom)
+      .then((dataUrl) => {
+        this.generatedImage = dataUrl;
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  };
+
+  reset = () => {
+    this.generatedImage = '';
+  };
 }
