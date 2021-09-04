@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ImageHolderComponent } from './components/image-holder/image-holder.component';
 import { SanitizePipe } from './sanitize.pipe';
-
+import { DragDropModule } from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [AppComponent, ImageHolderComponent],
   imports: [
@@ -17,6 +17,7 @@ import { SanitizePipe } from './sanitize.pipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   providers: [SanitizePipe],
   bootstrap: [AppComponent],
