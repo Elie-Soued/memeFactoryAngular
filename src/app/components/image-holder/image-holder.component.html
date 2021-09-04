@@ -1,11 +1,13 @@
 <div id="mainWrapper">
   <div>
     <nav>
-      <button (click)="goNext()">Next</button>
       <button (click)="goBack()">Previous</button>
+      <button (click)="goNext()">Next</button>
       <button (click)="goRandom()">Random</button>
       <button (click)="generate(centralImageDom)">Generate</button>
-      <button (click)="reset()">Reset</button>
+      <button (click)="reset(); upperInput.reset(); lowerInput.reset()">
+        Reset
+      </button>
     </nav>
   </div>
 
@@ -44,10 +46,10 @@
   <div #centralImageDom id="imageWrapper">
     <img [src]="centralPicture" />
 
-    <div id="UpperInput" [style.color]="colorInput.value">
+    <div id="UpperInput" [style.color]="colorInput.value" cdkDrag>
       {{ upperInput.value }}
     </div>
-    <div id="LowerInput" [style.color]="colorInput.value">
+    <div id="LowerInput" [style.color]="colorInput.value" cdkDrag>
       {{ lowerInput.value }}
     </div>
   </div>
