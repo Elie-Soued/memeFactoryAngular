@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ImagesService } from '../../images.service';
 import { FormControl } from '@angular/forms';
-import { Image } from '../../Image';
+import { Image } from '../../image';
 import { SanitizePipe } from '../../sanitize.pipe';
 import * as htmlToImage from 'html-to-image';
 
