@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ImagesService } from '../../images.service';
 import { FormControl } from '@angular/forms';
 import { Image } from '../../image';
@@ -18,8 +18,11 @@ export class ImageHolderComponent implements OnInit {
   generatedImage?: string;
   upperInput = new FormControl('');
   lowerInput = new FormControl('');
-  colorInput = new FormControl('');
+  upperColorInput = new FormControl('');
+  lowerColorInput = new FormControl('');
   fileInput = new FormControl('');
+  fontSizeUpper: number = 15;
+  fontSizeLower: number = 15;
 
   constructor(
     private imageService: ImagesService,
@@ -88,5 +91,21 @@ export class ImageHolderComponent implements OnInit {
 
   reset = () => {
     this.generatedImage = '';
+  };
+
+  increaseTextUpperSize = () => {
+    this.fontSizeUpper = this.fontSizeUpper + 1;
+  };
+
+  decreaseTextUpperSize = () => {
+    this.fontSizeUpper = this.fontSizeUpper - 1;
+  };
+
+  increaseTextLowerSize = () => {
+    this.fontSizeLower = this.fontSizeLower + 1;
+  };
+
+  decreaseTextLowerSize = () => {
+    this.fontSizeLower = this.fontSizeLower - 1;
   };
 }

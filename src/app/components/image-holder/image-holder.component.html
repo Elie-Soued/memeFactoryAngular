@@ -11,6 +11,8 @@
     </nav>
   </div>
 
+  <!--Upper Input Wrapper-->
+
   <div id="inputWrapper">
     <input
       type="text"
@@ -18,6 +20,22 @@
       placeholder="Top Input"
       [formControl]="upperInput"
     />
+
+    <div id="textColor">
+      <input
+        id="colorPicker"
+        type="color"
+        value="#FFFFFF"
+        [formControl]="upperColorInput"
+      />
+    </div>
+    <button (click)="increaseTextUpperSize()">+</button>
+    <button (click)="decreaseTextUpperSize()">-</button>
+  </div>
+
+  <!--Lower Input Wrapper-->
+
+  <div id="inputWrapper">
     <input
       type="text"
       id="BottomInput"
@@ -30,9 +48,11 @@
         id="colorPicker"
         type="color"
         value="#FFFFFF"
-        [formControl]="colorInput"
+        [formControl]="lowerColorInput"
       />
     </div>
+    <button (click)="increaseTextLowerSize()">+</button>
+    <button (click)="decreaseTextLowerSize()">-</button>
   </div>
 
   <input
@@ -46,10 +66,20 @@
   <div #centralImageDom id="imageWrapper">
     <img [src]="centralPicture" />
 
-    <div id="UpperInput" [style.color]="colorInput.value" cdkDrag>
+    <div
+      id="UpperInput"
+      [style.color]="upperColorInput.value"
+      [style.font-size.px]="fontSizeUpper"
+      cdkDrag
+    >
       {{ upperInput.value }}
     </div>
-    <div id="LowerInput" [style.color]="colorInput.value" cdkDrag>
+    <div
+      id="LowerInput"
+      [style.color]="lowerColorInput.value"
+      [style.font-size.px]="fontSizeLower"
+      cdkDrag
+    >
       {{ lowerInput.value }}
     </div>
   </div>
