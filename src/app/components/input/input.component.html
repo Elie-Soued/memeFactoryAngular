@@ -1,1 +1,21 @@
-<p>input works!</p>
+<div id="inputWrapper">
+  <input
+    type="text"
+    id="TopInput"
+    placeholder="Write something"
+    [formControl]="input"
+    (change)="sendMeme()"
+  />
+
+  <div id="textColor">
+    <input
+      id="colorPicker"
+      type="color"
+      value="#FFFFFF"
+      [formControl]="colorInput"
+      (change)="changeColor()"
+    />
+  </div>
+  <button (click)="increaseSize()">+</button>
+  <button (click)="decreaseSize()">-</button>
+</div>

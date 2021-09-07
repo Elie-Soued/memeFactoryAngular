@@ -5,58 +5,22 @@
       <button (click)="goNext()">Next</button>
       <button (click)="goRandom()">Random</button>
       <button (click)="generate(centralImageDom)">Generate</button>
-      <!-- <button (click)="reset(); upperInput.reset(); lowerInput.reset()"> -->
-      <!-- Reset
-      </button> -->
+      <button (click)="reset()">Reset</button>
     </nav>
   </div>
 
-  <!--Upper Input Wrapper-->
-
-  <app-input (meme)="setInputText($event)"></app-input>
-  <app-input></app-input>
-
-  <!-- <div id="inputWrapper">
-    <input
-      type="text"
-      id="TopInput"
-      placeholder="Top Input"
-      [formControl]="upperInput"
-    />
-
-    <div id="textColor">
-      <input
-        id="colorPicker"
-        type="color"
-        value="#FFFFFF"
-        [formControl]="upperColorInput"
-      />
-    </div>
-    <button (click)="increaseTextUpperSize()">+</button>
-    <button (click)="decreaseTextUpperSize()">-</button>
-  </div> -->
-
-  <!--Lower Input Wrapper-->
-
-  <!-- <div id="inputWrapper">
-    <input
-      type="text"
-      id="BottomInput"
-      placeholder="Bottom Input"
-      [formControl]="lowerInput"
-    />
-
-    <div id="textColor">
-      <input
-        id="colorPicker"
-        type="color"
-        value="#FFFFFF"
-        [formControl]="lowerColorInput"
-      />
-    </div>
-    <button (click)="increaseTextLowerSize()">+</button>
-    <button (click)="decreaseTextLowerSize()">-</button>
-  </div> -->
+  <app-input
+    (meme)="setUpperTextBox($event)"
+    (color)="setUpperTextBoxColor($event)"
+    (sizeIncrease)="increaseTextBoxUpper()"
+    (sizeDecrease)="decreaseTextBoxUpper()"
+  ></app-input>
+  <app-input
+    (meme)="setLowerTextBox($event)"
+    (color)="setLowerTextBoxColor($event)"
+    (sizeIncrease)="increaseTextBoxLower()"
+    (sizeDecrease)="decreaseTextBoxLower()"
+  ></app-input>
 
   <input
     type="file"
@@ -71,20 +35,20 @@
 
     <div
       id="UpperInput"
-      [style.color]="upperColorInput.value"
+      [style.color]="upperTextBoxColor"
       [style.font-size.px]="fontSizeUpper"
       cdkDrag
     >
-      {{ upperInput }}
+      {{ upperTextBox }}
     </div>
-    <!-- <div
+    <div
       id="LowerInput"
-      [style.color]="lowerColorInput.value"
+      [style.color]="lowerTextBoxColor"
       [style.font-size.px]="fontSizeLower"
       cdkDrag
     >
-      {{ lowerInput.value }}
-    </div> -->
+      {{ lowerTextBox }}
+    </div>
   </div>
 
   <div *ngIf="generatedImage">

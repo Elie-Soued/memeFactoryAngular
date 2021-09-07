@@ -11,20 +11,22 @@ import * as htmlToImage from 'html-to-image';
   styleUrls: ['./image-holder.component.css'],
 })
 export class ImageHolderComponent implements OnInit {
+  //Image related properties
   images?: Image[];
   index: number = 0;
   centralPicture?: string;
   uploadedPicture?: string;
   generatedImage?: string;
-  // upperInput = new FormControl('');
-  // lowerInput = new FormControl('');
 
-  upperInput: string = '';
-  upperColorInput = new FormControl('');
-  lowerColorInput = new FormControl('');
-  fileInput = new FormControl('');
+  //Input and TextBox
+  upperTextBoxColor: string = 'black';
+  lowerTextBoxColor: string = 'black';
+  upperTextBox?: string;
+  lowerTextBox?: string;
   fontSizeUpper: number = 15;
   fontSizeLower: number = 15;
+
+  fileInput = new FormControl('');
 
   constructor(
     private imageService: ImagesService,
@@ -34,6 +36,8 @@ export class ImageHolderComponent implements OnInit {
   ngOnInit(): void {
     this.getImages();
   }
+
+  //Images related methods
 
   getImages(): void {
     this.imageService
@@ -93,25 +97,47 @@ export class ImageHolderComponent implements OnInit {
 
   reset = () => {
     this.generatedImage = '';
+    this.upperTextBox = '';
+    this.lowerTextBox = '';
   };
 
-  increaseSize = (size: number) => {
-    this.fontSizeUpper = size;
-  };
+  // Input  and TextBox related methods
 
-  decreaseTextUpperSize = () => {
+  //Set the Text for the text-box
+
+  setUpperTextBox(value: string) {
+    this.upperTextBox = value;
+  }
+
+  setLowerTextBox(value: string) {
+    this.lowerTextBox = value;
+  }
+
+  //Set the color for the text-box
+
+  setUpperTextBoxColor(value: string) {
+    this.upperTextBoxColor = value;
+  }
+
+  setLowerTextBoxColor(value: string) {
+    this.lowerTextBoxColor = value;
+  }
+
+  //Set the size for the text-box
+
+  increaseTextBoxUpper() {
+    this.fontSizeUpper = this.fontSizeUpper + 1;
+  }
+
+  decreaseTextBoxUpper() {
     this.fontSizeUpper = this.fontSizeUpper - 1;
-  };
+  }
 
-  increaseTextLowerSize = () => {
+  increaseTextBoxLower() {
     this.fontSizeLower = this.fontSizeLower + 1;
-  };
+  }
 
-  decreaseTextLowerSize = () => {
+  decreaseTextBoxLower() {
     this.fontSizeLower = this.fontSizeLower - 1;
-  };
-
-  setInputText(value: string) {
-    this.upperInput = value;
   }
 }
