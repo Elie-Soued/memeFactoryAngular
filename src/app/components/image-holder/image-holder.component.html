@@ -5,15 +5,18 @@
       <button (click)="goNext()">Next</button>
       <button (click)="goRandom()">Random</button>
       <button (click)="generate(centralImageDom)">Generate</button>
-      <button (click)="reset(); upperInput.reset(); lowerInput.reset()">
-        Reset
-      </button>
+      <!-- <button (click)="reset(); upperInput.reset(); lowerInput.reset()"> -->
+      <!-- Reset
+      </button> -->
     </nav>
   </div>
 
   <!--Upper Input Wrapper-->
 
-  <div id="inputWrapper">
+  <app-input (meme)="setInputText($event)"></app-input>
+  <app-input></app-input>
+
+  <!-- <div id="inputWrapper">
     <input
       type="text"
       id="TopInput"
@@ -31,11 +34,11 @@
     </div>
     <button (click)="increaseTextUpperSize()">+</button>
     <button (click)="decreaseTextUpperSize()">-</button>
-  </div>
+  </div> -->
 
   <!--Lower Input Wrapper-->
 
-  <div id="inputWrapper">
+  <!-- <div id="inputWrapper">
     <input
       type="text"
       id="BottomInput"
@@ -53,7 +56,7 @@
     </div>
     <button (click)="increaseTextLowerSize()">+</button>
     <button (click)="decreaseTextLowerSize()">-</button>
-  </div>
+  </div> -->
 
   <input
     type="file"
@@ -72,16 +75,16 @@
       [style.font-size.px]="fontSizeUpper"
       cdkDrag
     >
-      {{ upperInput.value }}
+      {{ upperInput }}
     </div>
-    <div
+    <!-- <div
       id="LowerInput"
       [style.color]="lowerColorInput.value"
       [style.font-size.px]="fontSizeLower"
       cdkDrag
     >
       {{ lowerInput.value }}
-    </div>
+    </div> -->
   </div>
 
   <div *ngIf="generatedImage">
