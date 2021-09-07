@@ -9,8 +9,9 @@ import { AppComponent } from './app.component';
 import { ImageHolderComponent } from './components/image-holder/image-holder.component';
 import { SanitizePipe } from './sanitize.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { InputComponent } from './input/input.component';
 @NgModule({
-  declarations: [AppComponent, ImageHolderComponent],
+  declarations: [AppComponent, ImageHolderComponent, InputComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
