@@ -1,0 +1,66 @@
+<div id="mainWrapper">
+  <!--Buttons Component-->
+  <app-buttons
+    (back)="goBack()"
+    (next)="goNext()"
+    (random)="goRandom()"
+    (generate)="generate(centralImageDom)"
+    (reset)="reset()"
+  ></app-buttons>
+
+  <!--First Input Component-->
+  <app-input
+    (meme)="setUpperTextBox($event)"
+    (color)="setUpperTextBoxColor($event)"
+    (sizeIncrease)="increaseTextBoxUpper()"
+    (sizeDecrease)="decreaseTextBoxUpper()"
+  ></app-input>
+
+  <!--Second Input Component-->
+  <app-input
+    (meme)="setLowerTextBox($event)"
+    (color)="setLowerTextBoxColor($event)"
+    (sizeIncrease)="increaseTextBoxLower()"
+    (sizeDecrease)="decreaseTextBoxLower()"
+  ></app-input>
+
+  <!--File Input Element-->
+  <input
+    type="file"
+    id="input"
+    multiple
+    [formControl]="fileInput"
+    (change)="onFileSelected($event)"
+  />
+
+  <!-- <app-image-holder #centralImageDom></app-image-holder> -->
+
+  <div #centralImageDom id="imageWrapper">
+    <img [src]="centralPicture" />
+
+    <!--First TextBox Component-->
+    <div>
+      <app-text-box
+        id="UpperInput"
+        [textBox]="upperTextBox"
+        [textBoxColor]="upperTextBoxColor"
+        [textBoxFontSize]="fontSizeUpper"
+      ></app-text-box>
+    </div>
+
+    <!--Second TextBox Component-->
+    <div>
+      <app-text-box
+        id="LowerInput"
+        [textBox]="lowerTextBox"
+        [textBoxColor]="lowerTextBoxColor"
+        [textBoxFontSize]="fontSizeLower"
+      ></app-text-box>
+    </div>
+  </div>
+
+  <!--Generated Image-->
+  <div *ngIf="generatedImage">
+    <img src="{{ generatedImage }}" />
+  </div>
+</div>

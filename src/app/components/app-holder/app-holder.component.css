@@ -1,0 +1,44 @@
+img {
+  width: 300px;
+}
+
+#mainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#inputWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  text-align: center;
+}
+
+#UpperInput {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 20px;
+}
+
+#LowerInput {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+}
+
+#imageWrapper {
+  position: relative;
+}
+
+#textColor {
+  display: flex;
+  flex-direction: column;
+}
