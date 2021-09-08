@@ -1,67 +1,19 @@
-<div id="mainWrapper">
-  <!--Buttons Component-->
-  <app-buttons
-    (back)="goBack()"
-    (next)="goNext()"
-    (random)="goRandom()"
-    (generate)="generate(centralImageDom)"
-    (reset)="reset()"
-  ></app-buttons>
+<div #centralImageDom id="imageWrapper">
+  <img [src]="picture" />
 
-  <!--First Input Component-->
-  <app-input
-    (meme)="setUpperTextBox($event)"
-    (color)="setUpperTextBoxColor($event)"
-    (sizeIncrease)="increaseTextBoxUpper()"
-    (sizeDecrease)="decreaseTextBoxUpper()"
-  ></app-input>
+  <!--UpperTextBox-->
+  <app-text-box
+    id="UpperInput"
+    [textBox]="upperTextBox"
+    [textBoxColor]="upperTextBoxColor"
+    [textBoxFontSize]="fontSizeUpper"
+  ></app-text-box>
 
-  <!--Second Input Component-->
-  <app-input
-    (meme)="setLowerTextBox($event)"
-    (color)="setLowerTextBoxColor($event)"
-    (sizeIncrease)="increaseTextBoxLower()"
-    (sizeDecrease)="decreaseTextBoxLower()"
-  ></app-input>
-
-  <!--File Input Element-->
-  <input
-    type="file"
-    id="input"
-    multiple
-    [formControl]="fileInput"
-    (change)="onFileSelected($event)"
-  />
-
-  <!--I need to create a new Component that holds the Image-->
-
-  <div #centralImageDom id="imageWrapper">
-    <!--Image Element-->
-    <img [src]="centralPicture" />
-
-    <!--UpperTextBox-->
-    <div
-      id="UpperInput"
-      [style.color]="upperTextBoxColor"
-      [style.font-size.px]="fontSizeUpper"
-      cdkDrag
-    >
-      {{ upperTextBox }}
-    </div>
-
-    <!--LowerTextBox-->
-    <div
-      id="LowerInput"
-      [style.color]="lowerTextBoxColor"
-      [style.font-size.px]="fontSizeLower"
-      cdkDrag
-    >
-      {{ lowerTextBox }}
-    </div>
-  </div>
-
-  <!--Generated Image-->
-  <div *ngIf="generatedImage">
-    <img src="{{ generatedImage }}" />
-  </div>
+  <!--LowerTextBox-->
+  <app-text-box
+    id="LowerInput"
+    [textBox]="lowerTextBox"
+    [textBoxColor]="lowerTextBoxColor"
+    [textBoxFontSize]="fontSizeLower"
+  ></app-text-box>
 </div>
