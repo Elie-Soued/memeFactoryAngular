@@ -33,28 +33,17 @@
     (change)="onFileSelected($event)"
   />
 
+  <!--Image Holder Component-->
   <div #centralImageDom id="imageWrapper">
-    <img [src]="centralPicture" />
-
-    <!--First TextBox Component-->
-    <div>
-      <app-text-box
-        id="UpperInput"
-        [textBox]="upperTextBox"
-        [textBoxColor]="upperTextBoxColor"
-        [textBoxFontSize]="fontSizeUpper"
-      ></app-text-box>
-    </div>
-
-    <!--Second TextBox Component-->
-    <div>
-      <app-text-box
-        id="LowerInput"
-        [textBox]="lowerTextBox"
-        [textBoxColor]="lowerTextBoxColor"
-        [textBoxFontSize]="fontSizeLower"
-      ></app-text-box>
-    </div>
+    <app-image-holder
+      [picture]="centralPicture"
+      [upperTextBox]="upperTextBox"
+      [lowerTextBox]="lowerTextBox"
+      [upperTextBoxColor]="upperTextBoxColor"
+      [lowerTextBoxColor]="lowerTextBoxColor"
+      [fontSizeUpper]="fontSizeUpper"
+      [fontSizeLower]="fontSizeLower"
+    ></app-image-holder>
   </div>
 
   <!--Generated Image-->
