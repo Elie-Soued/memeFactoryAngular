@@ -1,20 +1,22 @@
 <div id="mainWrapper">
-  <div>
-    <nav>
-      <button (click)="goBack()">Previous</button>
-      <button (click)="goNext()">Next</button>
-      <button (click)="goRandom()">Random</button>
-      <button (click)="generate(centralImageDom)">Generate</button>
-      <button (click)="reset()">Reset</button>
-    </nav>
-  </div>
+  <!--Buttons Component-->
+  <app-buttons
+    (back)="goBack()"
+    (next)="goNext()"
+    (random)="goRandom()"
+    (generate)="generate(centralImageDom)"
+    (reset)="reset()"
+  ></app-buttons>
 
+  <!--First Input Component-->
   <app-input
     (meme)="setUpperTextBox($event)"
     (color)="setUpperTextBoxColor($event)"
     (sizeIncrease)="increaseTextBoxUpper()"
     (sizeDecrease)="decreaseTextBoxUpper()"
   ></app-input>
+
+  <!--Second Input Component-->
   <app-input
     (meme)="setLowerTextBox($event)"
     (color)="setLowerTextBoxColor($event)"
@@ -22,6 +24,7 @@
     (sizeDecrease)="decreaseTextBoxLower()"
   ></app-input>
 
+  <!--File Input Element-->
   <input
     type="file"
     id="input"
@@ -30,9 +33,13 @@
     (change)="onFileSelected($event)"
   />
 
+  <!--I need to create a new Component that holds the Image-->
+
   <div #centralImageDom id="imageWrapper">
+    <!--Image Element-->
     <img [src]="centralPicture" />
 
+    <!--UpperTextBox-->
     <div
       id="UpperInput"
       [style.color]="upperTextBoxColor"
@@ -41,6 +48,8 @@
     >
       {{ upperTextBox }}
     </div>
+
+    <!--LowerTextBox-->
     <div
       id="LowerInput"
       [style.color]="lowerTextBoxColor"
@@ -51,6 +60,7 @@
     </div>
   </div>
 
+  <!--Generated Image-->
   <div *ngIf="generatedImage">
     <img src="{{ generatedImage }}" />
   </div>

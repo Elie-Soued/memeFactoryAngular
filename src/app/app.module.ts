@@ -11,9 +11,15 @@ import { SanitizePipe } from './sanitize.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { InputComponent } from './components/input/input.component';
+import { ButtonsComponent } from './components/buttons/buttons.component';
 
 @NgModule({
-  declarations: [AppComponent, ImageHolderComponent, InputComponent],
+  declarations: [
+    AppComponent,
+    ImageHolderComponent,
+    InputComponent,
+    ButtonsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

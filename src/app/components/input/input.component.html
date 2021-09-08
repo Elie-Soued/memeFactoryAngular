@@ -4,7 +4,7 @@
     id="TopInput"
     placeholder="Write something"
     [formControl]="input"
-    (change)="sendMeme()"
+    (input)="sendMeme()"
   />
 
   <div id="textColor">
@@ -13,7 +13,7 @@
       type="color"
       value="#FFFFFF"
       [formControl]="colorInput"
-      (change)="changeColor()"
+      (input)="changeColor()"
     />
   </div>
   <button (click)="increaseSize()">+</button>
