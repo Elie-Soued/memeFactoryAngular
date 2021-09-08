@@ -12,6 +12,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { InputComponent } from './components/input/input.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
+import { AppHolderComponent } from './components/app-holder/app-holder.component';
+import { TextBoxComponent } from './components/text-box/text-box.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
     ImageHolderComponent,
     InputComponent,
     ButtonsComponent,
+    AppHolderComponent,
+    TextBoxComponent,
   ],
   imports: [
     BrowserModule,
