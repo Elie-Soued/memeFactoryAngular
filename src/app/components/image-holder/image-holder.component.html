@@ -1,19 +1,19 @@
 <div #centralImageDom id="imageWrapper">
   <img [src]="picture" />
 
-  <!--UpperTextBox-->
-  <app-text-box
-    id="UpperInput"
-    [textBox]="upperTextBox"
-    [textBoxColor]="upperTextBoxColor"
-    [textBoxFontSize]="fontSizeUpper"
-  ></app-text-box>
+  <div id="UpperInput">
+    <app-text-box
+      [textBox]="upperTextBox"
+      [textBoxColor]="upperTextBoxColor"
+      [textBoxFontSize]="fontSizeUpper"
+    ></app-text-box>
+  </div>
 
-  <!--LowerTextBox-->
-  <app-text-box
-    id="LowerInput"
-    [textBox]="lowerTextBox"
-    [textBoxColor]="lowerTextBoxColor"
-    [textBoxFontSize]="fontSizeLower"
-  ></app-text-box>
+  <div id="LowerInput">
+    <app-text-box
+      [textBox]="lowerTextBox"
+      [textBoxColor]="lowerTextBoxColor"
+      [textBoxFontSize]="fontSizeLower"
+    ></app-text-box>
+  </div>
 </div>
