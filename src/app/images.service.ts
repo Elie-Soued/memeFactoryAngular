@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { Response } from './Response';
 
 @Injectable({
@@ -11,6 +13,12 @@ export class ImagesService {
   constructor(private http: HttpClient) {}
 
   getImages(): Observable<Response> {
-    return this.http.get<Response>(this.imageUrl);
+    return this.http
+      .get<Response>(this.imageUrl)
+      .pipe(catchError(this.handleError));
+  }
+
+  handleError(err: HttpErrorResponse) {
+    return throwError(err);
   }
 }
