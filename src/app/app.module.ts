@@ -1,15 +1,18 @@
+//Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-
-import { AppComponent } from './app.component';
-import { ImageHolderComponent } from './components/image-holder/image-holder.component';
-import { SanitizePipe } from './sanitize.pipe';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
+//Pipe
+import { SanitizePipe } from './sanitize.pipe';
+
+//Components
+import { AppComponent } from './app.component';
+import { ImageHolderComponent } from './components/image-holder/image-holder.component';
 import { InputComponent } from './components/input/input.component';
 import { ButtonsComponent } from './components/buttons/buttons.component';
 import { AppHolderComponent } from './components/app-holder/app-holder.component';
