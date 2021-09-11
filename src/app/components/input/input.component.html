@@ -5,6 +5,7 @@
     placeholder="Write something"
     [formControl]="input"
     (input)="sendMeme()"
+    (change)="input.reset()"
   />
 
   <div id="textColor">
